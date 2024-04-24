@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 
 import 'blocs/app_bloc.dart';
 import 'blocs/bloc.dart';
-import 'themes/font_family.dart';
 import 'themes/theme_service.dart';
 import 'themes/themes.dart';
+import 'ui/navigation/navigation.dart';
+import 'ui/splash/splash_screen.dart';
+import 'utils/sizer_custom/sizer.dart';
 
 class App extends StatefulWidget {
   @override
@@ -79,31 +80,36 @@ class _AppState extends State<App> {
     //   ),
     // );
   
-    return GetMaterialApp(
-      builder: EasyLoading.init(builder: (context, child) {
-        return MediaQuery(
-          data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
-          child: child??SizedBox(),
+    return Sizer(
+      builder: (context, orientation, deviceType) {
+        return GetMaterialApp(
+          // builder: EasyLoading.init(builder: (context, child) {
+          //   return MediaQuery(
+          //     data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+          //     child: child??SizedBox(),
+          //   );
+          // },),
+          debugShowCheckedModeBanner: false,
+          themeMode: ThemeService.currentTheme,
+          darkTheme:  AppTheme.dark().data,
+          theme: AppTheme.light().data,
+          locale: Locale('vi', 'VN'),
+          // home: BlocBuilder<ApplicationBloc, ApplicationState>(
+          //   builder: (context, application) {
+          //     // if (application is ApplicationCompleted) {
+          //     //   if (auth is AuthenticationFail) {
+          //     //     return AuthenticateScreen();
+          //     //   }
+          //     //   if (auth is AuthenticationSuccess) {
+          //     //     return Navigation();
+          //     //   }
+          //     // }
+          //     // return SplashScreen();
+          //   },
+          // ),
+          home: Navigation(),
         );
-      },),
-      debugShowCheckedModeBanner: false,
-      themeMode: ThemeService.currentTheme,
-      darkTheme:  AppTheme.dark().data,
-      theme: AppTheme.light().data,
-      locale: Locale('vi', 'VN'),
-      home: BlocBuilder<ApplicationBloc, ApplicationState>(
-        builder: (context, application) {
-          // if (application is ApplicationCompleted) {
-          //   if (auth is AuthenticationFail) {
-          //     return AuthenticateScreen();
-          //   }
-          //   if (auth is AuthenticationSuccess) {
-          //     return Navigation();
-          //   }
-          // }
-          // return SplashScreen();
-        },
-      ),
+      }
     );
   }
 }

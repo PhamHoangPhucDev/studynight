@@ -9,7 +9,7 @@ import 'src/utils/logger.dart';
 void main() async {
   // WidgetsFlutterBinding.ensureInitialized();
   // await Firebase.initializeApp();
-  // Bloc.observer = AppBlocObserver();
+  Bloc.observer = AppBlocObserver();
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
     statusBarColor: Colors.transparent,
     statusBarBrightness: Brightness.dark,

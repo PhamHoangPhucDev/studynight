@@ -37,12 +37,14 @@ dependencies:
   cupertino_icons: ^1.0.6
   flutter_bloc: ^8.1.5
   bloc: ^8.1.4
-
+  dio: ^5.4.3+1
   #Utils
   get_storage: ^2.1.1
   get: ^4.6.6
   flutter_easyloading: ^3.0.5
-  google_fonts: ^6.2.1
+  lottie: ^3.1.0
+  flutter_blurhash: ^0.8.2
+
   #Firebase
 
   #Image
